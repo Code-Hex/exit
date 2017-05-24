@@ -14,25 +14,31 @@ type ok struct{ base }
 
 func (o ok) ExitCode() int { return o.code }
 func (o ok) Error() string { return o.err.Error() }
-func MakeOK(str string) ok { return ok{base{err: errors.New(str), code: OK}} }
+
+// MakeOK will return ok struct as error
+func MakeOK(str string) error { return ok{base{err: errors.New(str), code: OK}} }
 
 // USAGE means the command was used incorrectly, e.g., with the
 // wrong number of arguments, a bad flag, a bad syntax
 // in a parameter, or whatever
 type usage struct{ base }
 
-func (u usage) ExitCode() int    { return u.code }
-func (u usage) Error() string    { return u.err.Error() }
-func MakeUSAGE(str string) usage { return usage{base{err: errors.New(str), code: USAGE}} }
+func (u usage) ExitCode() int { return u.code }
+func (u usage) Error() string { return u.err.Error() }
+
+// MakeUSAGE will return usage struct as error
+func MakeUSAGE(str string) error { return usage{base{err: errors.New(str), code: USAGE}} }
 
 // DATAERR means the input data was incorrect in some way. This
 // should only be used for user's data and not system
 // files
 type dataerr struct{ base }
 
-func (d dataerr) ExitCode() int      { return d.code }
-func (d dataerr) Error() string      { return d.err.Error() }
-func MakeDATAERR(str string) dataerr { return dataerr{base{err: errors.New(str), code: DATAERR}} }
+func (d dataerr) ExitCode() int { return d.code }
+func (d dataerr) Error() string { return d.err.Error() }
+
+// MakeDATAERR will return dataerr struct as error
+func MakeDATAERR(str string) error { return dataerr{base{err: errors.New(str), code: DATAERR}} }
 
 // NOINPUT means an input file (not a system file) did not exist or
 // was not readable. This could also include errors
@@ -40,25 +46,31 @@ func MakeDATAERR(str string) dataerr { return dataerr{base{err: errors.New(str),
 // catch it).
 type noinput struct{ base }
 
-func (n noinput) ExitCode() int      { return n.code }
-func (n noinput) Error() string      { return n.err.Error() }
-func MakeNOINPUT(str string) noinput { return noinput{base{err: errors.New(str), code: NOINPUT}} }
+func (n noinput) ExitCode() int { return n.code }
+func (n noinput) Error() string { return n.err.Error() }
+
+// MakeNOINPUT will return noinput struct as error
+func MakeNOINPUT(str string) error { return noinput{base{err: errors.New(str), code: NOINPUT}} }
 
 // NOUSER means the user specified did not exist. This might be
 // used for mail addresses or remote logins.
 type nouser struct{ base }
 
-func (n nouser) ExitCode() int     { return n.code }
-func (n nouser) Error() string     { return n.err.Error() }
-func MakeNOUSER(str string) nouser { return nouser{base{err: errors.New(str), code: NOUSER}} }
+func (n nouser) ExitCode() int { return n.code }
+func (n nouser) Error() string { return n.err.Error() }
+
+// MakeNOUSER will return nouser struct as error
+func MakeNOUSER(str string) error { return nouser{base{err: errors.New(str), code: NOUSER}} }
 
 // NOHOST means the host specified did not exist. This is used in
 // mail addresses or network requests.
 type nohost struct{ base }
 
-func (n nohost) ExitCode() int     { return n.code }
-func (n nohost) Error() string     { return n.err.Error() }
-func MakeNOHOST(str string) nohost { return nohost{base{err: errors.New(str), code: NOHOST}} }
+func (n nohost) ExitCode() int { return n.code }
+func (n nohost) Error() string { return n.err.Error() }
+
+// MakeNOHOST will return nohost struct as error
+func MakeNOHOST(str string) error { return nohost{base{err: errors.New(str), code: NOHOST}} }
 
 // UNAVAILABLE means a service is unavailable. This can occur if a support
 // program or file does not exist. This can also
@@ -68,7 +80,9 @@ type unavailable struct{ base }
 
 func (u unavailable) ExitCode() int { return u.code }
 func (u unavailable) Error() string { return u.err.Error() }
-func MakeUNAVAILABLE(str string) unavailable {
+
+// MakeUNAVAILABLE will return unavailable struct as error
+func MakeUNAVAILABLE(str string) error {
 	return unavailable{base{err: errors.New(str), code: UNAVAILABLE}}
 }
 
@@ -77,9 +91,11 @@ func MakeUNAVAILABLE(str string) unavailable {
 // errors as possible.
 type software struct{ base }
 
-func (s software) ExitCode() int       { return s.code }
-func (s software) Error() string       { return s.err.Error() }
-func MakeSOFTWARE(str string) software { return software{base{err: errors.New(str), code: SOFTWARE}} }
+func (s software) ExitCode() int { return s.code }
+func (s software) Error() string { return s.err.Error() }
+
+// MakeSOFTWARE will return software struct as error
+func MakeSOFTWARE(str string) error { return software{base{err: errors.New(str), code: SOFTWARE}} }
 
 // OSERR means an operating system error has been detected. This
 // is intended to be used for such things as `cannot
@@ -88,34 +104,40 @@ func MakeSOFTWARE(str string) software { return software{base{err: errors.New(st
 // does not exist in the passwd file.
 type oserr struct{ base }
 
-func (o oserr) ExitCode() int    { return o.code }
-func (o oserr) Error() string    { return o.err.Error() }
-func MakeOSERR(str string) oserr { return oserr{base{err: errors.New(str), code: OSERR}} }
+func (o oserr) ExitCode() int { return o.code }
+func (o oserr) Error() string { return o.err.Error() }
+
+// MakeOSERR will return oserr struct as error
+func MakeOSERR(str string) error { return oserr{base{err: errors.New(str), code: OSERR}} }
 
 // OSFILE means some system file (e.g., /etc/passwd, /var/run/utmp,
 // etc.) does not exist, cannot be opened, or has some
 // sort of error (e.g., syntax error).
 type osfile struct{ base }
 
-func (o osfile) ExitCode() int     { return o.code }
-func (o osfile) Error() string     { return o.err.Error() }
-func MakeOSFILE(str string) osfile { return osfile{base{err: errors.New(str), code: OSFILE}} }
+func (o osfile) ExitCode() int { return o.code }
+func (o osfile) Error() string { return o.err.Error() }
+
+// MakeOSFILE will return osfile struct as error
+func MakeOSFILE(str string) error { return osfile{base{err: errors.New(str), code: OSFILE}} }
 
 // CANTCREAT means a (user specified) output file cannot be created.
 type cantcreat struct{ base }
 
 func (c cantcreat) ExitCode() int { return c.code }
 func (c cantcreat) Error() string { return c.err.Error() }
-func MakeCANTCREAT(str string) cantcreat {
-	return cantcreat{base{err: errors.New(str), code: CANTCREAT}}
-}
+
+// MakeCANTCREAT will return cantcreat struct as error
+func MakeCANTCREAT(str string) error { return cantcreat{base{err: errors.New(str), code: CANTCREAT}} }
 
 // IOERR means an error occurred while doing I/O on some file.
 type ioerr struct{ base }
 
-func (i ioerr) ExitCode() int    { return i.code }
-func (i ioerr) Error() string    { return i.err.Error() }
-func MakeIOERR(str string) ioerr { return ioerr{base{err: errors.New(str), code: IOERR}} }
+func (i ioerr) ExitCode() int { return i.code }
+func (i ioerr) Error() string { return i.err.Error() }
+
+// MakeIOERR will return ioerr struct as error
+func MakeIOERR(str string) error { return ioerr{base{err: errors.New(str), code: IOERR}} }
 
 // TEMPFAIL means temporary failure, indicating something that is not
 // really an error. In sendmail, this means that a
@@ -123,17 +145,21 @@ func MakeIOERR(str string) ioerr { return ioerr{base{err: errors.New(str), code:
 // the request should be reattempted later.
 type tempfail struct{ base }
 
-func (t tempfail) ExitCode() int       { return t.code }
-func (t tempfail) Error() string       { return t.err.Error() }
-func MakeTEMPFAIL(str string) tempfail { return tempfail{base{err: errors.New(str), code: TEMPFAIL}} }
+func (t tempfail) ExitCode() int { return t.code }
+func (t tempfail) Error() string { return t.err.Error() }
+
+// MakeTEMPFAIL will return tempfail struct as error
+func MakeTEMPFAIL(str string) error { return tempfail{base{err: errors.New(str), code: TEMPFAIL}} }
 
 // PROTOCOL means the remote system returned something that was `not
 // possible` during a protocol exchange.
 type protocol struct{ base }
 
-func (p protocol) ExitCode() int       { return p.code }
-func (p protocol) Error() string       { return p.err.Error() }
-func MakePROTOCOL(str string) protocol { return protocol{base{err: errors.New(str), code: PROTOCOL}} }
+func (p protocol) ExitCode() int { return p.code }
+func (p protocol) Error() string { return p.err.Error() }
+
+// MakePROTOCOL will return protocol struct as error
+func MakePROTOCOL(str string) error { return protocol{base{err: errors.New(str), code: PROTOCOL}} }
 
 // NOPERM means you did not have sufficient permission to perform
 // the operation.  This is not intended for file sys­tem
@@ -141,14 +167,18 @@ func MakePROTOCOL(str string) protocol { return protocol{base{err: errors.New(st
 // CANTCREAT, but rather for higher level permis­sions.
 type noperm struct{ base }
 
-func (n noperm) ExitCode() int     { return n.code }
-func (n noperm) Error() string     { return n.err.Error() }
-func MakeNOPERM(str string) noperm { return noperm{base{err: errors.New(str), code: NOPERM}} }
+func (n noperm) ExitCode() int { return n.code }
+func (n noperm) Error() string { return n.err.Error() }
+
+// MakeNOPERM will return noperm struct as error
+func MakeNOPERM(str string) error { return noperm{base{err: errors.New(str), code: NOPERM}} }
 
 // CONFIG means Something was found in an unconfigured or
 // miscon­figured state.
 type config struct{ base }
 
-func (c config) ExitCode() int     { return c.code }
-func (c config) Error() string     { return c.err.Error() }
-func MakeCONFIG(str string) config { return config{base{err: errors.New(str), code: CONFIG}} }
+func (c config) ExitCode() int { return c.code }
+func (c config) Error() string { return c.err.Error() }
+
+// MakeCONFIG will return config struct as error
+func MakeCONFIG(str string) error { return config{base{err: errors.New(str), code: CONFIG}} }
