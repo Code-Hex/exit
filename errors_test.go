@@ -5,113 +5,177 @@ package exit
 import "testing"
 
 func TestMakeOK(t *testing.T) {
-	err := MakeOK("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeOK(msg)
 	if err.(ok).ExitCode() != OK {
 		t.Fatal("Failed to get exitcode in TestMakeOK")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeUSAGE(t *testing.T) {
-	err := MakeUSAGE("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeUSAGE(msg)
 	if err.(usage).ExitCode() != USAGE {
 		t.Fatal("Failed to get exitcode in TestMakeUSAGE")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeDATAERR(t *testing.T) {
-	err := MakeDATAERR("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeDATAERR(msg)
 	if err.(dataerr).ExitCode() != DATAERR {
 		t.Fatal("Failed to get exitcode in TestMakeDATAERR")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeNOINPUT(t *testing.T) {
-	err := MakeNOINPUT("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeNOINPUT(msg)
 	if err.(noinput).ExitCode() != NOINPUT {
 		t.Fatal("Failed to get exitcode in TestMakeNOINPUT")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeNOUSER(t *testing.T) {
-	err := MakeNOUSER("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeNOUSER(msg)
 	if err.(nouser).ExitCode() != NOUSER {
 		t.Fatal("Failed to get exitcode in TestMakeNOUSER")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeNOHOST(t *testing.T) {
-	err := MakeNOHOST("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeNOHOST(msg)
 	if err.(nohost).ExitCode() != NOHOST {
 		t.Fatal("Failed to get exitcode in TestMakeNOHOST")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeUNAVAILABLE(t *testing.T) {
-	err := MakeUNAVAILABLE("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeUNAVAILABLE(msg)
 	if err.(unavailable).ExitCode() != UNAVAILABLE {
 		t.Fatal("Failed to get exitcode in TestMakeUNAVAILABLE")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeSOFTWARE(t *testing.T) {
-	err := MakeSOFTWARE("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeSOFTWARE(msg)
 	if err.(software).ExitCode() != SOFTWARE {
 		t.Fatal("Failed to get exitcode in TestMakeSOFTWARE")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeOSERR(t *testing.T) {
-	err := MakeOSERR("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeOSERR(msg)
 	if err.(oserr).ExitCode() != OSERR {
 		t.Fatal("Failed to get exitcode in TestMakeOSERR")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeOSFILE(t *testing.T) {
-	err := MakeOSFILE("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeOSFILE(msg)
 	if err.(osfile).ExitCode() != OSFILE {
 		t.Fatal("Failed to get exitcode in TestMakeOSFILE")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeCANTCREAT(t *testing.T) {
-	err := MakeCANTCREAT("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeCANTCREAT(msg)
 	if err.(cantcreat).ExitCode() != CANTCREAT {
 		t.Fatal("Failed to get exitcode in TestMakeCANTCREAT")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeIOERR(t *testing.T) {
-	err := MakeIOERR("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeIOERR(msg)
 	if err.(ioerr).ExitCode() != IOERR {
 		t.Fatal("Failed to get exitcode in TestMakeIOERR")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeTEMPFAIL(t *testing.T) {
-	err := MakeTEMPFAIL("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeTEMPFAIL(msg)
 	if err.(tempfail).ExitCode() != TEMPFAIL {
 		t.Fatal("Failed to get exitcode in TestMakeTEMPFAIL")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakePROTOCOL(t *testing.T) {
-	err := MakePROTOCOL("this is the error msg")
+	msg := "this is the error msg"
+	err := MakePROTOCOL(msg)
 	if err.(protocol).ExitCode() != PROTOCOL {
 		t.Fatal("Failed to get exitcode in TestMakePROTOCOL")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeNOPERM(t *testing.T) {
-	err := MakeNOPERM("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeNOPERM(msg)
 	if err.(noperm).ExitCode() != NOPERM {
 		t.Fatal("Failed to get exitcode in TestMakeNOPERM")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }
 
 func TestMakeCONFIG(t *testing.T) {
-	err := MakeCONFIG("this is the error msg")
+	msg := "this is the error msg"
+	err := MakeCONFIG(msg)
 	if err.(config).ExitCode() != CONFIG {
 		t.Fatal("Failed to get exitcode in TestMakeCONFIG")
+	}
+	if err.Error() != msg {
+		t.Fatal("Unpexted error message, expected %s", msg)
 	}
 }

@@ -105,9 +105,13 @@ func CreateErrorsTestGo() {
 		name := strings.ToLower(resource)
 		fmt.Fprintf(&buf, "func TestMake%s(t *testing.T) {\n", resource)
 		fmt.Fprintf(&buf,
-			`err := Make%s("this is the error msg")
+			`msg := "this is the error msg"
+err := Make%s(msg)
 if err.(%s).ExitCode() != %s {
 	t.Fatal("Failed to get exitcode in TestMake%s")
+}
+if err.Error() != msg {
+	t.Fatal("Unpexted error message, expected %%s", msg)
 }
 `, resource, name, resource, resource)
 		buf.WriteString("}\n\n")
