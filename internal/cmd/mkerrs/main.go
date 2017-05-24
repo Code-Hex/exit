@@ -74,10 +74,8 @@ type base struct {
 func (%c %s) ExitCode() int { return %c.code }
 func (%c %s) Error() string { return %c.err.Error() }
 `, top, name, top, top, name, top)
-		fmt.Fprintf(&buf, "func (%c %s) Wrap%s(err error) %s { return %s{base{err: err, code: %s}} }\n",
-			top, name, resource, name, name, resource)
-		fmt.Fprintf(&buf, "func (%c %s) Make%s(str string) %s { return %s{base{err: errors.New(str), code: %s}} }\n",
-			top, name, resource, name, name, resource)
+		fmt.Fprintf(&buf, "func Make%s(str string) %s { return %s{base{err: errors.New(str), code: %s}} }\n",
+			resource, name, name, resource)
 	}
 
 	formatted, err := format.Source(buf.Bytes())

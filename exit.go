@@ -1,6 +1,5 @@
 package exit
 
-// http://kaworu.jpn.org/doc/FreeBSD/jman/man3/sysexits.3.php
 const (
 	OK = 0
 
