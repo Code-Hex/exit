@@ -15,9 +15,9 @@ func TestMakeOK(t *testing.T) {
 	}
 }
 
-func TestMakeUSAGE(t *testing.T) {
+func TestMakeUsage(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeUSAGE(msg)
+	err := MakeUsage(msg)
 	if err.(usage).ExitCode() != USAGE {
 		t.Fatal("Failed to get exitcode in TestMakeUSAGE")
 	}
@@ -26,9 +26,9 @@ func TestMakeUSAGE(t *testing.T) {
 	}
 }
 
-func TestMakeDATAERR(t *testing.T) {
+func TestMakeDataErr(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeDATAERR(msg)
+	err := MakeDataErr(msg)
 	if err.(dataerr).ExitCode() != DATAERR {
 		t.Fatal("Failed to get exitcode in TestMakeDATAERR")
 	}
@@ -37,9 +37,9 @@ func TestMakeDATAERR(t *testing.T) {
 	}
 }
 
-func TestMakeNOINPUT(t *testing.T) {
+func TestMakeNoInput(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeNOINPUT(msg)
+	err := MakeNoInput(msg)
 	if err.(noinput).ExitCode() != NOINPUT {
 		t.Fatal("Failed to get exitcode in TestMakeNOINPUT")
 	}
@@ -48,9 +48,9 @@ func TestMakeNOINPUT(t *testing.T) {
 	}
 }
 
-func TestMakeNOUSER(t *testing.T) {
+func TestMakeNoUser(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeNOUSER(msg)
+	err := MakeNoUser(msg)
 	if err.(nouser).ExitCode() != NOUSER {
 		t.Fatal("Failed to get exitcode in TestMakeNOUSER")
 	}
@@ -59,9 +59,9 @@ func TestMakeNOUSER(t *testing.T) {
 	}
 }
 
-func TestMakeNOHOST(t *testing.T) {
+func TestMakeNoHost(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeNOHOST(msg)
+	err := MakeNoHost(msg)
 	if err.(nohost).ExitCode() != NOHOST {
 		t.Fatal("Failed to get exitcode in TestMakeNOHOST")
 	}
@@ -70,9 +70,9 @@ func TestMakeNOHOST(t *testing.T) {
 	}
 }
 
-func TestMakeUNAVAILABLE(t *testing.T) {
+func TestMakeUnAvailable(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeUNAVAILABLE(msg)
+	err := MakeUnAvailable(msg)
 	if err.(unavailable).ExitCode() != UNAVAILABLE {
 		t.Fatal("Failed to get exitcode in TestMakeUNAVAILABLE")
 	}
@@ -81,9 +81,9 @@ func TestMakeUNAVAILABLE(t *testing.T) {
 	}
 }
 
-func TestMakeSOFTWARE(t *testing.T) {
+func TestMakeSoftWare(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeSOFTWARE(msg)
+	err := MakeSoftWare(msg)
 	if err.(software).ExitCode() != SOFTWARE {
 		t.Fatal("Failed to get exitcode in TestMakeSOFTWARE")
 	}
@@ -92,9 +92,9 @@ func TestMakeSOFTWARE(t *testing.T) {
 	}
 }
 
-func TestMakeOSERR(t *testing.T) {
+func TestMakeOSErr(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeOSERR(msg)
+	err := MakeOSErr(msg)
 	if err.(oserr).ExitCode() != OSERR {
 		t.Fatal("Failed to get exitcode in TestMakeOSERR")
 	}
@@ -103,9 +103,9 @@ func TestMakeOSERR(t *testing.T) {
 	}
 }
 
-func TestMakeOSFILE(t *testing.T) {
+func TestMakeOSFile(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeOSFILE(msg)
+	err := MakeOSFile(msg)
 	if err.(osfile).ExitCode() != OSFILE {
 		t.Fatal("Failed to get exitcode in TestMakeOSFILE")
 	}
@@ -114,9 +114,9 @@ func TestMakeOSFILE(t *testing.T) {
 	}
 }
 
-func TestMakeCANTCREAT(t *testing.T) {
+func TestMakeCantCreate(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeCANTCREAT(msg)
+	err := MakeCantCreate(msg)
 	if err.(cantcreat).ExitCode() != CANTCREAT {
 		t.Fatal("Failed to get exitcode in TestMakeCANTCREAT")
 	}
@@ -125,9 +125,9 @@ func TestMakeCANTCREAT(t *testing.T) {
 	}
 }
 
-func TestMakeIOERR(t *testing.T) {
+func TestMakeIOErr(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeIOERR(msg)
+	err := MakeIOErr(msg)
 	if err.(ioerr).ExitCode() != IOERR {
 		t.Fatal("Failed to get exitcode in TestMakeIOERR")
 	}
@@ -136,9 +136,9 @@ func TestMakeIOERR(t *testing.T) {
 	}
 }
 
-func TestMakeTEMPFAIL(t *testing.T) {
+func TestMakeTempFail(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeTEMPFAIL(msg)
+	err := MakeTempFail(msg)
 	if err.(tempfail).ExitCode() != TEMPFAIL {
 		t.Fatal("Failed to get exitcode in TestMakeTEMPFAIL")
 	}
@@ -147,9 +147,9 @@ func TestMakeTEMPFAIL(t *testing.T) {
 	}
 }
 
-func TestMakePROTOCOL(t *testing.T) {
+func TestMakeProtocol(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakePROTOCOL(msg)
+	err := MakeProtocol(msg)
 	if err.(protocol).ExitCode() != PROTOCOL {
 		t.Fatal("Failed to get exitcode in TestMakePROTOCOL")
 	}
@@ -158,9 +158,9 @@ func TestMakePROTOCOL(t *testing.T) {
 	}
 }
 
-func TestMakeNOPERM(t *testing.T) {
+func TestMakeNoPerm(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeNOPERM(msg)
+	err := MakeNoPerm(msg)
 	if err.(noperm).ExitCode() != NOPERM {
 		t.Fatal("Failed to get exitcode in TestMakeNOPERM")
 	}
@@ -169,9 +169,9 @@ func TestMakeNOPERM(t *testing.T) {
 	}
 }
 
-func TestMakeCONFIG(t *testing.T) {
+func TestMakeConfig(t *testing.T) {
 	msg := "this is the error msg"
-	err := MakeCONFIG(msg)
+	err := MakeConfig(msg)
 	if err.(config).ExitCode() != CONFIG {
 		t.Fatal("Failed to get exitcode in TestMakeCONFIG")
 	}
