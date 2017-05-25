@@ -50,7 +50,7 @@ func fileoperate() error {
 }
 
 func dosomething3() error {
-	return exit.MakeOSFILE("Failed to operate files")
+	return exit.MakeOSFile("Failed to operate files")
 }
 
 func dosomething2() error {
